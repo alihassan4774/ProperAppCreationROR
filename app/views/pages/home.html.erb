@@ -1,3 +1,9 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<%= @posts.inspect %>
+<h1>Blogs Post</h1>
+<% @posts.find_each do |post|  %>
+  <p><%= post.title %></p>
+<% end %>
+
+<h1>Skills</h1>
+<% @skills.find_each do |skill|  %>
+  <p><%= skill.title %> - <%= skill.percent_utilized %>%</p>
+<% end %>
