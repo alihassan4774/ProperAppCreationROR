@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "portfolio/service"
+  get "portfolio/project"
+  get "portfolio/expreience"
   get "pages/home"
   get "pages/about"
   get "pages/contact"
