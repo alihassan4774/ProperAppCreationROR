@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :my_portfolios
+  resources :portfolios
   get "portfolio/service"
   get "portfolio/project"
   get "portfolio/expreience"
