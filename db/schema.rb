@@ -33,7 +33,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_01_05_062135) do
     t.string "subtitle"
     t.text "body"
     t.text "main_image"
-    t.string "thumb"
+    t.string "thumb-image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
