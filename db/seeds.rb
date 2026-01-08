@@ -25,7 +25,7 @@ puts "5 skills created",
        in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
         non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     main_image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-Rejw1o-O-KUg6obEIt3jEkabeMY8ldoAmg&s",
-    thumb: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPRXWZYD1ku0cBnVH3vNsG4z5mIQXHATU5xA&s"
+    thumb_image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-Rejw1o-O-KUg6obEIt3jEkabeMY8ldoAmg&s"
   )
 end
 puts "15 portfolio items created"

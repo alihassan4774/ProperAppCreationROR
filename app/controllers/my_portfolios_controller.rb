@@ -4,25 +4,47 @@ class MyPortfoliosController < ApplicationController
   end
 
   def new
-    @portfolio_items = Portfolio.new
+    @portfolio_item = Portfolio.new
   end
 
   def create
-    # Bug fix 1: params should permit a hash with specified keys, not 'expect' a specific structure.
-    @portfolio_items = Portfolio.new(params.require(:portfolio_item).permit(:title, :subtitle, :body))
+    @portfolio_item = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :body))
 
     respond_to do |format|
-      if @portfolio_items.save
-        # Bug fix 2: 'portfolio_path' is a collection route. You likely meant to redirect to the show page of the created item.
-        # Assuming you have a 'show' action, the path would likely be portfolio_item_path(@portfolio_items) or similar,
-        # but using the generic 'portfolio_path' with the item object should also work if you have standard RESTful routes.
-        # If 'portfolio_path' leads to the index page, the original path name might be correct depending on desired UX.
-        format.html { redirect_to @portfolio_items, notice: "Portfolio item was successfully created." }
-        format.json { render :show, status: :created, location: @portfolio_items }
+      if @portfolio_item.save
+
+        format.html { redirect_to portfolios_path, notice: "Portfolio item was successfully created." }
+        format.json { render :show, status: :created, location: @portfolio_item }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @portfolio_items.errors, status: :unprocessable_entity }
+        format.json { render json: @portfolio_item.errors, status: :unprocessable_entity }
       end
+    end
+  end
+  def edit
+    @portfolio_item = Portfolio.find(params[:id])
+  end
+
+  def update
+     @portfolio_item = Portfolio.find(params[:id])
+
+    respond_to do |format|
+      if @portfolio_item.update(params.require(:portfolio).permit(:title, :subtitle, :body))
+        format.html { redirect_to portfolios_path, notice: "Portfolio item was successfully updated.", status: :see_other }
+        format.json { render :show, status: :ok, location: @portfolio_item }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @portfolio_item.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+   def destroy
+    @portfolio_item = Portfolio.find(params[:id])
+    @portfolio_item.destroy!
+    respond_to do |format|
+      format.html { redirect_to portfolios_path, notice: "Portfolio item was successfully destroyed.", status: :see_other }
+      format.json { head :no_content }
     end
   end
 end
