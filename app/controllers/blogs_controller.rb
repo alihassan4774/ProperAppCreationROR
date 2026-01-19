@@ -54,7 +54,7 @@ class BlogsController < ApplicationController
   private
 
     def set_blog
-      @blog = Blog.find(params.expect(:id))
+      @blog = Blog.friendly.find(params.expect(:id))
     end
 
     def blog_params
