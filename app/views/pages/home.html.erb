@@ -1,14 +1,31 @@
 <h1>Blogs Post</h1>
-<% @posts.find_each do |post|  %>
-  <p><%= post.title %></p>
-<% end %>
 
-<h1>Skills</h1>
-<% @skills.find_each do |skill|  %>
-  <p><%= skill.title %> - <%= skill.percent_utilized %>%</p>
-<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>Blog Title</th>
+      <th>Blog Body</th>
+      <th>Status</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
 
-<h1>Portfolio Items</h1>
-<% @portfolio_items.find_each do |portfolio_item|  %>
-  <p><%= portfolio_item.title %></p>
-<% end %>
+  <tbody>
+    <% @posts.each do |blog| %>
+      <tr>
+        <td><%= blog.title %></td>
+        <td><%= blog.body %></td>
+        <td><%= link_to blog.status, toggle_status_blog_path(blog) %></td>
+        <td><%= link_to "Show", blog %></td>
+        <td><%= link_to "Edit", edit_blog_path(blog) %></td>
+        <td>
+         <%= button_to "Delete Post",
+      blog,
+      method: :delete,
+      data: { turbo_confirm: "Are you sure?" },
+      form: { style: "display:inline" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
