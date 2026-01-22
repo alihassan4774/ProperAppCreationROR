@@ -61,6 +61,4 @@ end
 
 group :development, :test do
   gem "byebug", platforms: [ :mri, :mingw, :x64_mingw ]
-  # or simply:
-  gem "byebug"
 end
