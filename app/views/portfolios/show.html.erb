@@ -1,4 +1,4 @@
-<%= image_tag @portfolio_item.main_image unless @portfolio_item.main_image.nil? %>
+<img src="<%= @portfolio_item.thumb %>" alt="<%= @portfolio_item.title %>">
 
 
 <h1><%= @portfolio_item.title %></h1>
