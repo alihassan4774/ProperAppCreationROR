@@ -1,0 +1,39 @@
+<h1> Create the Portfolio Item </h1>
+
+<%= form_for(@portfolio_item) do |form| %>
+
+ <% if @portfolio_item.errors.any? %>
+    <ul>
+      <% @portfolio_item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+  <div>
+    <%= form.label :subtitle, style: "display: block" %>
+    <%= form.text_field :subtitle %>
+  </div>
+
+  <div>
+    <%= form.label :body, style: "display: block" %>
+    <%= form.text_area :body %>
+  </div>
+
+ <%# Nested Form  %>
+<ul>
+  <%= form.fields_for :technologies do |technology_form| %>
+  <li>
+    <%= technology_form.label :name %>
+    <%= technology_form.text_field :name %>
+  </li>
+  <% end %>
+</ul>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
