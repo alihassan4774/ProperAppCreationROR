@@ -14,7 +14,7 @@
 <img src="<%= portfolio_item.thumb %>" alt="<%= portfolio_item.title %>">
 
 
-<%= link_to "Show", portfolio_path(portfolio_item.id) %>
+<%= link_to "Show",  portfolio_show_path(portfolio_item.id) %>
 
 <%=  link_to "Edit", edit_portfolio_path(portfolio_item.id) %> 
 

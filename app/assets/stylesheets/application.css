@@ -9,3 +9,7 @@
  * Consider organizing styles into separate files for maintainability.
  *= require_self
  */
+
+ .top a {
+    color: brown;
+}

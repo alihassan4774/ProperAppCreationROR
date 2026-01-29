@@ -2,3 +2,8 @@ body{
     background-color: black;
     color: azure;
 }
+
+.top a {
+    color: white !important;
+}
+
