@@ -4,11 +4,14 @@ class BlogsController < ApplicationController
 
   def index
     @blogs = Blog.all
+    @page_title = "My Portfolio Blogs"
   end
 
 
 
   def show
+     @page_title = @blog.title
+     @seo_keywords = @blog.body
   end
 
   def new
@@ -57,7 +60,7 @@ class BlogsController < ApplicationController
   if  @blog.draft?
     @blog.published!
   elsif @blog.published?
-    @blog.draft! 
+    @blog.draft!
   end
   redirect_to blogs_url, notice: "Blog Status was updated!."
   end
