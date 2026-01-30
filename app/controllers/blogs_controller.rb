@@ -23,6 +23,7 @@ class BlogsController < ApplicationController
 
   def create
     @blog = Blog.new(blog_params)
+    @blog.topic_id = Topic.first.id
 
     respond_to do |format|
       if @blog.save
